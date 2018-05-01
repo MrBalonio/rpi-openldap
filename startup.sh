@@ -21,6 +21,9 @@ fi
 if [ ! -z $LDAP_NEXTCLOUD_PWD_FILE -a -f $LDAP_NEXTCLOUD_PWD_FILE ]; then
     LDAP_NEXTCLOUD_PWD=`cat $LDAP_NEXTCLOUD_PWD_FILE`;
 fi
+if [ ! -z $LDAP_GOGS_PWD_FILE -a -f $LDAP_GOGS_PWD_FILE ]; then
+    LDAP_GOGS_PWD=`cat $LDAP_GOGS_PWD_FILE`;
+fi
 
 echo slapd slapd/internal/generated_adminpw password ${LDAP_ADMIN_PWD} | debconf-set-selections \
     && echo slapd slapd/internal/adminpw password ${LDAP_ADMIN_PWD} | debconf-set-selections \
@@ -67,8 +70,10 @@ function replace {
     sed -i "s/\${VOLUMES_PATH}/${VOLUMES_PATH//\//\\/}/g" $1
     sed -i "s/\${LDAP_MAIL_UID}/${LDAP_MAIL_UID}/g" $1
     sed -i "s/\${LDAP_NEXTCLOUD_UID}/${LDAP_NEXTCLOUD_UID}/g" $1
+    sed -i "s/\${LDAP_GOGS_UID}/${LDAP_GOGS_UID}/g" $1
     sed -i "s/\${LDAP_MAIL_PWD}/${LDAP_MAIL_PWD}/g" $1
     sed -i "s/\${LDAP_NEXTCLOUD_PWD}/${LDAP_NEXTCLOUD_PWD}/g" $1
+    sed -i "s/\${LDAP_GOGS_PWD}/${LDAP_GOGS_PWD}/g" $1
 }
 ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/data/_postfix-book.ldif
 for i in `ls /tmp/data/[^_]*.ldif`; do
