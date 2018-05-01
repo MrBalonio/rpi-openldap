@@ -65,6 +65,8 @@ function replace {
     sed -i "s/\${LDAP_EXTENSION}/${LDAP_EXTENSION}/g" $1
     sed -i "s/\${LDAP_DOMAIN}/${LDAP_DOMAIN}/g" $1
     sed -i "s/\${VOLUMES_PATH}/${VOLUMES_PATH//\//\\/}/g" $1
+    sed -i "s/\${LDAP_MAIL_UID}/${LDAP_MAIL_UID}/g" $1
+    sed -i "s/\${LDAP_NEXTCLOUD_UID}/${LDAP_NEXTCLOUD_UID}/g" $1
     sed -i "s/\${LDAP_MAIL_PWD}/${LDAP_MAIL_PWD}/g" $1
     sed -i "s/\${LDAP_NEXTCLOUD_PWD}/${LDAP_NEXTCLOUD_PWD}/g" $1
 }

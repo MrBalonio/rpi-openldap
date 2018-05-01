@@ -1,8 +1,8 @@
 # postfix, dovecot, roundcube, ...
-dn: uid=mail,ou=services,dc=${LDAP_ORGANIZATION},dc=${LDAP_EXTENSION}
+dn: uid=${LDAP_MAIL_UID},ou=services,dc=${LDAP_ORGANIZATION},dc=${LDAP_EXTENSION}
 objectClass: simpleSecurityObject
 objectClass: account
 objectClass: top
-uid: mail
+uid: ${LDAP_MAIL_UID}
 userPassword: ${LDAP_MAIL_PWD}
 

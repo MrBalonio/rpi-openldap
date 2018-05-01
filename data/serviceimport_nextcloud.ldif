@@ -1,8 +1,8 @@
 # nextcloud
-dn: uid=nextcloud,ou=services,dc=${LDAP_ORGANIZATION},dc=${LDAP_EXTENSION}
+dn: uid=${LDAP_NEXTCLOUD_UID},ou=services,dc=${LDAP_ORGANIZATION},dc=${LDAP_EXTENSION}
 objectClass: simpleSecurityObject
 objectClass: account
 objectClass: top
-uid: nextcloud
+uid: ${LDAP_NEXTCLOUD_UID}
 userPassword: ${LDAP_NEXTCLOUD_PWD}
 
